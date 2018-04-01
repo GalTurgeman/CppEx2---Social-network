@@ -2,19 +2,22 @@
 #include <array>
 #include <string>
 #include <iostream>
+#include "MySingeltonVector.h"
 
 #pragma once
 
-static int numUsers, idCreator;
-
 using namespace std;
+
+static int idCreator, numUsers;
 
 class Member {
 
 private:
-    vector<Member*> followList; //list of people i follow
-    vector<Member*> followMeList; //list of people who follow me
+    vector<Member *> followList; //list of people i follow
+    vector<Member *> followMeList; //list of people who follow me
     int id;
+    MySingeltonVector* v = MySingeltonVector::getInstance(); //list of all members in the system
+
 
 public:
 
@@ -26,21 +29,12 @@ public:
 
     int numFollowing();
 
-    static int count() { return numUsers; }
+    static int count();
 
-    //constructor
-    Member() {
-        id = idCreator; //create specific id for Member
-        ++idCreator;
-        ++numUsers;
-//        cout << "number of users: " << numUsers << endl;
-//        cout << "idCreator: " << idCreator << endl;
-    }
+    Member();
 
-    //destructor
-    ~Member() {
-        --numUsers;
-    }
+    ~Member();
+
 
 };
 

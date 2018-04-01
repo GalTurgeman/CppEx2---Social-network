@@ -1,7 +1,30 @@
 #include "Member.h"
+#include <algorithm>
+
+//constructor
+Member::Member() {
+    id = idCreator; //create specific id for Member
+    ++idCreator;
+    ++numUsers;
+    v->addToList(id);
+}
+
+//destructor
+Member::~Member() {
+    --numUsers;
+    for (int i = 0; i < v->size(); ++i) {
+        if (v->get(i) == id)
+            v->remove(id);
+    }
+
+    if(v->size()==0)
+        v->deleteInstance();
+}
+
+
+int Member::count() { return numUsers; }
 
 void Member::follow(Member &other) {
-
     for (int i = 0; i < followList.size(); ++i) {
         if (other.id == (*followList[i]).id) return; //already following member
     }
@@ -12,15 +35,14 @@ void Member::follow(Member &other) {
 }
 
 void Member::unfollow(Member &other) {
-
-    for (int i = 0; i < followList.size(); ++i) {
+    for (int i = 0; i < followList.size(); ++i) {//find other member
         if (other.id == (*followList[i]).id) {
-            followList.erase(followList.begin() + i); //remove Member
+            followList.erase(followList.begin() + i); //remove Member from my follow list
         }
     }
 
-    for (int i = 0; i < other.followMeList.size(); ++i) {
-        if (other.followMeList[i]->id==id) {
+    for (int i = 0; i < other.followMeList.size(); ++i) {//find me on other's  followMe list
+        if (other.followMeList[i]->id == id) {
             other.followMeList.erase(other.followMeList.begin() + i); //remove Member
         }
     }
@@ -28,9 +50,21 @@ void Member::unfollow(Member &other) {
 }
 
 int Member::numFollowers() {
+//    cout<<"followMeList v size: "<<v.size()<<endl;
+
+    for (int i = 0; i < followMeList.size(); ++i) {
+        if (!v->contains(followMeList[i]->id))
+            followMeList.erase(followMeList.begin() + i);
+    }
     return followMeList.size();
 }
 
 int Member::numFollowing() {
+//    cout<<"followList v size: "<<v.size()<<endl;
+
+    for (int i = 0; i < followList.size(); ++i) {
+        if (!v->contains(followList[i]->id))
+            followList.erase(followList.begin() + i);
+    }
     return followList.size();
 }
