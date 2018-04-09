@@ -16,7 +16,7 @@ private:
     vector<Member *> followList; //list of people i follow
     vector<Member *> followMeList; //list of people who follow me
     int id;
-    MySingeltonVector* v = MySingeltonVector::getInstance(); //list of all members in the system
+    MySingeltonVector *v = MySingeltonVector::getInstance(); //list of all members in the system
 
 
 public:

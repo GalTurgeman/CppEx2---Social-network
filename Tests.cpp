@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 //#define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
-#include "Main/Member.h"
+#include "Member.h"
 
 TEST_CASE("Testing the follow function") {
     Member m1, m2, m3;

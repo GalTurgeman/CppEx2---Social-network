@@ -17,7 +17,7 @@ Member::~Member() {
             v->remove(id);
     }
 
-    if(v->size()==0)
+    if (v->size() == 0)
         v->deleteInstance();
 }
 
@@ -50,8 +50,6 @@ void Member::unfollow(Member &other) {
 }
 
 int Member::numFollowers() {
-//    cout<<"followMeList v size: "<<v.size()<<endl;
-
     for (int i = 0; i < followMeList.size(); ++i) {
         if (!v->contains(followMeList[i]->id))
             followMeList.erase(followMeList.begin() + i);
@@ -60,8 +58,6 @@ int Member::numFollowers() {
 }
 
 int Member::numFollowing() {
-//    cout<<"followList v size: "<<v.size()<<endl;
-
     for (int i = 0; i < followList.size(); ++i) {
         if (!v->contains(followList[i]->id))
             followList.erase(followList.begin() + i);
