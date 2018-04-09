@@ -17,7 +17,7 @@ void test1() {
     cout << "  " << Member::count() << endl; // 4
 }
 
-int run() {
+int main() {
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 0
     avi.follow(beni);
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 1
