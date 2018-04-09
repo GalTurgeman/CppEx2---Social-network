@@ -28,6 +28,7 @@ int main() {
     avi.follow(beni); // duplicate follow has no effect
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 1
     avi.unfollow(beni);
+    avi.unfollow(chana);
     cout << avi.numFollowers() << " " << avi.numFollowing() << endl; // 0 0
     cout << endl;
 

@@ -11,10 +11,11 @@ Member::Member() {
 
 //destructor
 Member::~Member() {
-    --numUsers;
     for (int i = 0; i < v->size(); ++i) {
-        if (v->get(i) == id)
+        if (v->get(i) == id) {
             v->remove(id);
+            --numUsers;
+        }
     }
 
     if (v->size() == 0)
