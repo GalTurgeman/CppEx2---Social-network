@@ -27,7 +27,7 @@ int Member::count() { return numUsers; }
 
 void Member::follow(Member &other) {
     for (int i = 0; i < followList.size(); ++i) {
-        if (other.id == (*followList[i]).id) return; //already following member
+        if (other.id == (*followList[i]).id || other.id == id) return; //already following member
     }
 
     //not following Member. Add it to following list

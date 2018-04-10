@@ -12,7 +12,7 @@ MySingeltonVector::~MySingeltonVector() {}
 void MySingeltonVector::deleteInstance() {
     instanceFlag = false;
     delete instance;
-    instance=NULL;
+    instance = NULL;
 }
 
 MySingeltonVector *MySingeltonVector::getInstance() {
