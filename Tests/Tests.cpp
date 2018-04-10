@@ -26,3 +26,11 @@ TEST_CASE("Testing the count function"){
     CHECK(Member::count() == 3);
 }
 
+TEST_CASE("Test follow/unfollow myself"){
+    Member m1;
+    m1.follow(m1);
+            CHECK(m1.numFollowing() == 0);
+    m1.unfollow(m1);
+            CHECK(m1.numFollowing()==0);
+}
+
